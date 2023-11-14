@@ -122,7 +122,7 @@ NexT.motion.middleWares = {
   },
 
   postList: function(integrator) {
-    var postBlock = document.querySelectorAll('.post-block, .pagination, .comments');
+    var postBlock = document.querySelectorAll('.post-block, .pagination, .');
     var postBlockTransition = CONFIG.motion.transition.post_block;
     var postHeader = document.querySelectorAll('.post-header');
     var postHeaderTransition = CONFIG.motion.transition.post_header;
