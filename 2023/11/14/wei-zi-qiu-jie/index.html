@@ -184,12 +184,12 @@
   const initWaline = () => {
     const waline = Waline.init(Object.assign({
       el: '#waline-wrap',
-      serverURL: 'https://wline-816ey6gg2-ccgaos-projects.vercel.app',
+      serverURL: 'https://wline.vercel.app/',
       pageview: false,
       dark: 'html[data-theme="dark"]',
       path: window.location.pathname,
       comment: false,
-    }, null))
+    }, {"requiredMeta":["nick","mail"],"locale":{"placeholder":"昵称和邮箱为必填项，为了您能及时收到相关回复的邮件通知，请确保邮箱的正确性！"}}))
   }
 
   const loadWaline = async () => {
