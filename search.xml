@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>c++语法</title>
+      <link href="/2023/11/15/c-yu-fa/"/>
+      <url>/2023/11/15/c-yu-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h1><h2 id="结构体内存对齐"><a href="#结构体内存对齐" class="headerlink" title="结构体内存对齐"></a><em>结构体内存对齐</em></h2><p>计算机系统对于基本数据类型数据在内存中存放要求他们的<strong>首地址是某个数的倍数</strong>。</p><ul><li>#pragma pack(n)</li></ul><p>​指定编译器的有效对齐值，且有效对齐值是<strong>#pragma pack(n)<strong>和</strong>结构体中最长数据类型</strong>长度中<strong>较小</strong>的那个</p><ul><li><p>alignas</p><p>与#pragma pack(n)类似，制定结构体的对齐值，但alignas可使对齐值不受#pragma pack(n)影响。优先级最高。</p></li><li><p>alignof</p><p>计算出对齐值</p></li><li><p>结构体内成员按照声明顺序存储，第一个成员地址和整个结构体地址相同。</p></li><li><p>未特殊说明时，按结构体中size最大的成员对齐（若有double成员，按8字节对齐。）</p></li></ul><p>参考文献：<a href="https://zhuanlan.zhihu.com/p/30007037">C/C++内存对齐详解</a></p><h2 id="指针与引用"><a href="#指针与引用" class="headerlink" title="指针与引用"></a>指针与引用</h2><ul><li>指针是一个变量，存储地址，引用只是变量别名=&gt;<ul><li>指针可以多级，引用只能一级、</li><li>指针可以为空（NULL），引用不能为空且定义必须初始化（引用只是别名，不初始化，就没有引用的原名）</li><li>指针可以在初始化后改变指向，引用不行</li><li>sizeof得到的是指针的大小，sizeof引用得到所指变量大小</li><li>函数中指针传递不改变原值，引用会</li></ul></li></ul><h2 id="指针类型"><a href="#指针类型" class="headerlink" title="指针类型"></a>指针类型</h2><pre><code class="c++">int *p[10]      //指针数组int (*p)[10]//指向int数组的指针int *p(int)//函数声名，函数名为p，参数为int型，返回值为int*int (*p)(int)//函数指针，指向int型参数，返回值也是int型的函数</code></pre><h2 id="C-中的构造函数"><a href="#C-中的构造函数" class="headerlink" title="C++中的构造函数"></a>C++中的构造函数</h2><ul><li><p>默认构造函数</p></li><li><p>初始化构造函数（有参数）</p></li><li><p>拷贝构造函数</p></li><li><p>移动构造函数（move和右值引用）</p></li><li><p>委托构造函数</p></li><li><p>转换构造函数</p></li><li><pre><code class="c++">#include &lt;iostream&gt;using namespace std;class Student{public:    Student(){//默认构造函数，没有参数        this-&gt;age = 20;        this-&gt;num = 1000;    };      Student(int a, int n):age(a), num(n){}; //初始化构造函数，有参数和参数列表    Student(const Student&amp; s){//拷贝构造函数，这里与编译器生成的一致        this-&gt;age = s.age;        this-&gt;num = s.num;    };     Student(int r){   //转换构造函数,形参是其他类型变量，且只有一个形参        this-&gt;age = r;        this-&gt;num = 1002;    };    ~Student(){}public:    int age;    int num;};int main(){    Student s1;    Student s2(18,1001);    int a = 10;    Student s3(a);    Student s4(s3);        printf("s1 age:%d, num:%d\n", s1.age, s1.num);    printf("s2 age:%d, num:%d\n", s2.age, s2.num);    printf("s3 age:%d, num:%d\n", s3.age, s3.num);    printf("s2 age:%d, num:%d\n", s4.age, s4.num);    return 0;}//运行结果//s1 age:20, num:1000//s2 age:18, num:1001//s3 age:10, num:1002//s2 age:10, num:1002</code></pre></li></ul><h2 id="大端小端"><a href="#大端小端" class="headerlink" title="大端小端"></a>大端小端</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;iomanip&gt;void show_mem_rep(char *start, int n) {    for (int i = 0; i &lt; n; ++i) {        std::cout &lt;&lt; std::hex &lt;&lt; std::setw(2) &lt;&lt; std::setfill('0') &lt;&lt; static_cast&lt;int&gt;(start[i]) &lt;&lt; std::endl;//        printf("%.2x", start[i]);    }}int main() {    int i = 0x01234567;    show_mem_rep((char *)&amp;i, sizeof (i));}</code></pre><p><strong>输出结果：</strong></p><p><strong>67</strong><br><strong>45</strong><br><strong>23</strong><br><strong>01</strong></p><ul><li>std::hex设置输出为十六进制格式</li><li>std::setw(2)设置输出宽度为2</li><li>std::setfill(‘0’)用于在宽度不足时使用零填充</li></ul><h2 id="编译与连接模型"><a href="#编译与连接模型" class="headerlink" title="编译与连接模型"></a>编译与连接模型</h2><p>源文件-&gt; 编译成目标文件，再将目标文件链接起来得到可执行文件</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>位姿优化</title>
       <link href="/2023/11/15/wei-zi-you-hua/"/>
       <url>/2023/11/15/wei-zi-you-hua/</url>
