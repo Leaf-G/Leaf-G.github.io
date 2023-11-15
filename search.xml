@@ -12,6 +12,12 @@
       
       
       
+        <tags>
+            
+            <tag> 位姿优化 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -23,6 +29,12 @@
       
         <content type="html"><![CDATA[]]></content>
       
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
       
       
         <tags>
